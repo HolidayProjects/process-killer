@@ -29,7 +29,7 @@ func scanner() []*Process {
 	for _, idx := range processes {
 		id := idx.Pid
 
-		name, err := idx.Name()
+		name, err := idx.CmdLine()
 		if err != nil {
 			name = "Desconhecido"
 		}
