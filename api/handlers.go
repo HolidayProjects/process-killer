@@ -24,8 +24,8 @@ type Items struct {
 // kill: Captura o id do processo e o mata
 func kill(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Query().Get("id")
-	exec.Command("sudo", "kill", "-9", id)
-
+	cmd := exec.Command("sudo", "kill", "-9", id)
+	cmd.Run()
 	message := fmt.Sprintf("Process: %s removed!", id)
 	http.SetCookie(w, &http.Cookie{
 		Name:    "message",
